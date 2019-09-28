@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main2Activity extends AppCompatActivity {
     CheckBox C1, C2, C3, C4, C5, C6, C7, C8;
@@ -40,8 +42,49 @@ public class Main2Activity extends AppCompatActivity {
             }
         }
         catch (FileNotFoundException e){
-            
+            Log.d("Error", "No file");
         }
+        catch (IOException e){
+            Log.d("Error", "IO Error");
+        }
+        String arr[] = data.split(" ");
+        C1.setText(arr[0]);
+        C2.setText(arr[1]);
+        C3.setText(arr[2]);
+        C4.setText(arr[3]);
+        C5.setText(arr[4]);
+        C6.setText(arr[5]);
+        C7.setText(arr[6]);
+        C8.setText(arr[7]);
+    }
+
+    public void showData(View v){
+        String ck = "You are enrolled in: ";
+        if(C1.isChecked()){
+            ck = ck + " " + C1.getText().toString();
+        }
+        if(C2.isChecked()){
+            ck = ck + " " + C2.getText().toString();
+        }
+        if(C3.isChecked()){
+            ck = ck + " " + C3.getText().toString();
+        }
+        if(C4.isChecked()){
+            ck = ck + " " + C4.getText().toString();
+        }
+        if(C5.isChecked()){
+            ck = ck + " " + C5.getText().toString();
+        }
+        if(C6.isChecked()){
+            ck = ck + " " + C6.getText().toString();
+        }
+        if(C7.isChecked()){
+            ck = ck + " " + C7.getText().toString();
+        }
+        if(C8.isChecked()){
+            ck = ck + " " + C8.getText().toString();
+        }
+        Toast.makeText(this, ck, Toast.LENGTH_LONG).show();
     }
 
 }
